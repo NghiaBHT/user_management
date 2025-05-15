@@ -4,7 +4,7 @@ This is a FastAPI-based User Management API.
 
 ## Prerequisites
 
-*   Python 3.9+
+*   Python 3.13
 *   pip (Python package installer)
 *   PostgreSQL (or your configured database)
 

@@ -52,7 +52,7 @@ This is a FastAPI-based User Management API.
     ```bash
     alembic upgrade head
     ```
-    (If this is the first time, you might need to initialize Alembic if it hasn't been done yet. Refer to Alembic documentation if `alembic.ini` and the migrations directory are not present.)
+    If you haven't created the database yet, please create a database named `usermanagementdb` first. Then, run the above command to apply the migrations.
 
 ## Running the Application
 

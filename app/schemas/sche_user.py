@@ -1,5 +1,5 @@
 from datetime import datetime
-from typing import Optional
+from typing import Optional, List
 from pydantic import BaseModel, EmailStr
 
 from app.helpers.enums import UserRole
@@ -8,6 +8,10 @@ from app.helpers.enums import UserRole
 class UserBase(BaseModel):
     email: EmailStr
     full_name: str
+
+    model_config = {
+        'from_attributes': True
+    }
 
 class UserItemResponse(UserBase):
     id: int
@@ -20,8 +24,22 @@ class UserCreateRequest(UserBase):
     is_active: bool = True  
 
 class UserUpdateRequest(BaseModel):
-    full_name: str
-    email: EmailStr
-    password: str
-    is_active: bool = True
-    role: UserRole
+    full_name: Optional[str] = None
+    email: Optional[EmailStr] = None
+    password: Optional[str] = None
+    is_active: Optional[bool] = None
+    role: Optional[UserRole] = None
+
+class PaginationParams(BaseModel):
+    skip: int = 0
+    limit: int = 100
+
+    model_config = {
+        'extra': 'forbid'
+    }
+
+class PaginatedUserResponse(BaseModel):
+    total: int
+    skip: int
+    limit: int
+    data: List[UserItemResponse]

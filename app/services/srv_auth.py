@@ -22,3 +22,6 @@ class AuthService(object):
         if not verify_password(password, user.hashed_password):
             return None
         return user
+
+    # @staticmethod
+    # def get_current_user(*, user_id: Optional[int] = None) -> Optional[User]:

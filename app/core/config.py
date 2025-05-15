@@ -1,9 +1,12 @@
 import os
+from dotenv import load_dotenv
+
+load_dotenv()  # Load environment variables from .env file
 
 class Settings:
-    DATABASE_URL: str = os.getenv("DATABASE_URL", "postgresql://postgres:20122001@localhost:5432/usermanagementdb")
-    ACCESS_TOKEN_EXPIRE_SECONDS: int = 60 * 60 * 24 * 7 
-    SECRET_KEY = os.getenv('SECRET_KEY', 'my-secret-key')
-    ALGORITHM = "HS256"
+    DATABASE_URL: str = os.getenv("DATABASE_URL", " ")
+    ACCESS_TOKEN_EXPIRE_SECONDS: int = int(os.getenv("ACCESS_TOKEN_EXPIRE_SECONDS", 60 * 60 * 24 * 7))
+    SECRET_KEY: str = os.getenv('SECRET_KEY', '')
+    ALGORITHM: str = os.getenv('ALGORITHM', "")
 
 settings = Settings()

@@ -29,7 +29,7 @@ def create(user_data: UserCreateRequest, user_service: UserService = Depends()) 
     except Exception as e:
         raise CustomException(http_code=500, code='500', message=f"An unexpected error occurred: {str(e)}")
     
-@router.get("/{user_id}", response_model=DataResponse[UserItemResponse])
+@router.get("/{user_id}", response_model=DataResponse[UserItemResponse], dependencies=[Depends(require_role([UserRole.ADMIN]))])
 def detail(user_id: int, user_service: UserService = Depends()) -> Any:
     """
     API get Detail User
@@ -42,7 +42,7 @@ def detail(user_id: int, user_service: UserService = Depends()) -> Any:
     except Exception as e:
         raise CustomException(http_code=500, code='500', message=f"An unexpected error occurred: {str(e)}")
     
-@router.put("/{user_id}", response_model=DataResponse[UserItemResponse])
+@router.put("/{user_id}", response_model=DataResponse[UserItemResponse], dependencies=[Depends(require_role([UserRole.ADMIN]))])
 def update(user_id: int, user_data: UserUpdateRequest, user_service: UserService = Depends()) -> Any:
     """
     API update User
@@ -55,7 +55,7 @@ def update(user_id: int, user_data: UserUpdateRequest, user_service: UserService
     except Exception as e:
         raise CustomException(http_code=500, code='500', message=f"An unexpected error occurred: {str(e)}")
 
-@router.delete("/{user_id}", response_model=DataResponse[UserItemResponse])
+@router.delete("/{user_id}", response_model=DataResponse[UserItemResponse], dependencies=[Depends(require_role([UserRole.ADMIN]))])
 def delete(user_id: int, user_service: UserService = Depends()) -> Any:
     """
     API delete User

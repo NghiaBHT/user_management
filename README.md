@@ -48,6 +48,10 @@ This is a FastAPI-based User Management API.
 
 5.  **Database Migrations**
 
+    Setup connection database at file `alembic.ini`
+    ```ini
+    sqlalchemy.url = postgresql://youruser:yourpassword@localhost:5432/yourdatabasename
+    ```
     This project uses Alembic for database migrations. To set up or update your database schema, run:
     ```bash
     alembic upgrade head

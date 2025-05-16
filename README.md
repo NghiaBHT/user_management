@@ -39,7 +39,7 @@ This is a FastAPI-based User Management API.
     Create a `.env` file in the project root. You can copy the structure from the default settings in `app/core/config.py` or use the example below, adjusting the values as necessary:
 
     ```env
-    DATABASE_URL=postgresql://youruser:yourpassword@localhost:5432/yourdatabasename
+    DATABASE_URL=postgresql://youruser:yourpassword@localhost:5432/usermanagementdb
     ACCESS_TOKEN_EXPIRE_SECONDS=604800
     SECRET_KEY=your-very-strong-secret-key
     ALGORITHM=HS256
@@ -50,7 +50,7 @@ This is a FastAPI-based User Management API.
 
     Setup connection database at file `alembic.ini`
     ```ini
-    sqlalchemy.url = postgresql://youruser:yourpassword@localhost:5432/yourdatabasename
+    sqlalchemy.url = postgresql://youruser:yourpassword@localhost:5432/usermanagementdb
     ```
     This project uses Alembic for database migrations. To set up or update your database schema, run:
     ```bash

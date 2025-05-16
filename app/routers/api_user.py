@@ -15,7 +15,7 @@ from app.core.dependencies import get_current_user, require_role
 from app.models.model_user import User
 
 
-router = APIRouter(prefix="/users", tags=["users"])
+router = APIRouter(prefix="/users", tags=["users"], dependencies=[Depends(require_role([UserRole.ADMIN]))])
 @router.post("", response_model=DataResponse[UserItemResponse])
 def create(user_data: UserCreateRequest, user_service: UserService = Depends()) -> Any:
     """

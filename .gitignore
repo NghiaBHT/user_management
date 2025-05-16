@@ -1,14 +1,10 @@
-# Ignore all __pycache__ directories anywhere in the repo
 **/__pycache__/
 
-# Ignore all .pyc, .pyo, .pyd files
 *.py[cod]
 *.pyo
 *.pyd
 
-# If you want to ignore cached pytest bytecode too
 tests/**/__pycache__/
 
-# Optional: ignore editor or OS files you don’t care about
 *.swp
 .DS_Store
